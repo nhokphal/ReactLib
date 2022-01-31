@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="addition.css">
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        <title>Addition </title>
+        <link 
+
+    </head>
+    
+    <body>
+    
+
+
+        <div id="app"></div>
+
+        <script type="text/babel"> // translate into react, 
+           
+            /*function Hello(props) { // props is short for property
+                return (
+                    <h1>Hello! {props.name}!</h1> // add App props to Hello Props
+                );
+            }*/
+            //document.addEventListener('DOMContentLoaded', () => {
+              //  document.querySelector("#app").style.background = 'red'; 
+
+           // });
+            
+            function App() {
+                //const x = 1;
+                //const y = 2;
+              /* const [count, setCount] = React.useState(29);  // use initial value of state 
+                function updateCount() {
+                    setCount(count + 1);
+                }*/
+
+            const [state, setState] = React.useState({
+                num1: 1,
+                num2: 4,
+                response: "",
+                score: 0,
+                incorrect: false
+
+            }); 
+            
+            function inputKeyPress(event){
+                if(event.key == "Enter"){
+                    const answer = parseInt(state.response); // convert string to integer first
+                    if (state.num1 + state.num2 === answer){
+                        setState({
+                            ...state,
+                            num1: Math.ceil(Math.random() * 10),
+                            num2: Math.ceil(Math.random() * 10),
+                            score: state.score + 1,
+                            response: "",
+                            incorrect: false
+                            // user got the questin right
+                        })  
+                    }else{
+                        setState({
+                            ...state,
+                            score: state.score - 1, 
+                            response: "",
+                            incorrect: true
+
+                        })
+                        
+                    }
+                }
+            }
+
+            function updateResponse(event){
+                setState({
+                    ...state,
+                    response: event.target.value
+                });
+            }
+            if (state.score == 10) {
+                return (
+                    <div id="winner">
+                        YOU WON!
+                    </div>
+                )
+            }
+                return (
+                    <div>
+                        <div className={state.incorrect ? "incorrect" : ""} id="problem">{state.num1} + {state.num2}</div>
+                        <input autoFocus={true} onKeyPress = {inputKeyPress}onChange={updateResponse} value={state.response}/>
+                        <div>Score: {state.score} </div>
+                    </div>
+
+                );
+            
+            
+            }
+
+            ReactDOM.render(<App />, document.querySelector('#app'));
+        </script>
+        
+    </body>
+</html>

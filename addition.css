@@ -1,0 +1,19 @@
+#app {
+    text-align: center;
+    font-family: monospace;
+
+}
+
+#problem {
+    font-size: 72px;
+}
+
+.incorrect {
+    color: red;
+}
+
+
+#winner {
+    font-size: 72px;
+    color: green;
+}

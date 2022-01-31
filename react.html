@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+        <script src="" async defer></script>
+
+    </head>
+    <body>
+        <div id="app"></div>
+
+        <script type="text/babel"> // translate into react, 
+           
+            function Hello(props) { // props is short for property
+                return (
+                    <h1>Hello! {props.name}!</h1> // add App props to Hello Props
+                );
+            }
+           
+            function App() {
+                //const x = 1;
+                //const y = 2;
+
+                return (
+                    <div>
+                    <Hello name="phal"/>
+                    <Hello name="ron"/>
+                    <Hello name="rin"/>
+                    </div>
+                        
+
+
+                );
+            
+            
+            }
+
+            ReactDOM.render(<App />, document.querySelector('#app'));
+        </script>
+        
+    </body>
+</html>
